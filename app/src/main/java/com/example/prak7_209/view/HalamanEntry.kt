@@ -32,6 +32,32 @@ import kotlin.math.sin
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
+fun EntrySiswaBody(
+    uiStateSiswa: UIStateSiswa,
+    onSiswaValueChange: (DetailSiswa)-> Unit,
+    onSaveClick: ()-> Unit,
+    modifier: Modifier = Modifier
+)
+{
+    Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_large)),
+        modifier = modifier.padding(dimensionResource(R.dimen.padding_medium))) {
+        FormInputSiswa(
+            detailSiswa = uiStateSiswa.detailSiswa,
+            onValueChange = onSiswaValueChange,
+            modifier = Modifier.fillMaxWidth()
+        )
+        Button(
+            onClick = onSaveClick,
+            enabled = uiStateSiswa.isEntryValid,
+            shape = MaterialTheme.shapes.small,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(stringResource(R.string.btn_submit))
+        }
+    }
+}
+
+@Composable
 fun FormInputSiswa(
     detailSiswa: DetailSiswa,
     modifier: Modifier = Modifier,
