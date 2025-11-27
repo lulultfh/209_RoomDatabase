@@ -8,3 +8,11 @@ interface ContainerApp{
     val RepositoriSiswa : RepositoriSiswa
 }
 
+class ContainerDataApp(private val context: Context):
+    ContainerApp{
+    override val RepositoriSiswa: RepositoriSiswa by lazy {
+        OfflineRepositoriSiswa(
+            DatabaseSiswa.getDatabase(context).siswaDao()
+        )
+    }
+}
