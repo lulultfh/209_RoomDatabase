@@ -41,6 +41,19 @@ import com.example.prak7_209.viewmodel.provider.PenyediaViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
+fun ListSiswa(
+    itemSiswa: List<Siswa>,
+    modifier: Modifier= Modifier
+){
+    LazyColumn(modifier = Modifier) {
+        items(items=itemSiswa, key={ it.id }){
+                person -> DataSiswa(
+            siswa = person, modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
+        )
+        }
+    }
+}
+@Composable
 fun DataSiswa(
     siswa: Siswa,
     modifier: Modifier = Modifier
