@@ -36,6 +36,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.prak7_209.R
 import com.example.prak7_209.room.Siswa
+import com.example.prak7_209.view.route.DestinasiHome
 import com.example.prak7_209.viewmodel.HomeViewModel
 import com.example.prak7_209.viewmodel.provider.PenyediaViewModel
 
