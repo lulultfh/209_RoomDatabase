@@ -15,6 +15,17 @@ import com.example.prak7_209.view.HomeScreen
 import com.example.prak7_209.view.route.DestinasiEntry
 import com.example.prak7_209.view.route.DestinasiHome
 
+@Composable
+fun SiswaApp(
+    navController: NavHostController = rememberNavController(),
+    modifier: Modifier
+)
+{
+    HostNavigasi(
+        navController = navController
+    )
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HostNavigasi(
