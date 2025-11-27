@@ -23,6 +23,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.prak7_209.R
+import com.example.prak7_209.view.route.DestinasiEntry
 import com.example.prak7_209.viewmodel.DetailSiswa
 import com.example.prak7_209.viewmodel.EntryViewModel
 import com.example.prak7_209.viewmodel.UIStateSiswa
