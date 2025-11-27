@@ -1,6 +1,8 @@
 package com.example.prak7_209.viewmodel
 
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.example.prak7_209.repository.RepositoriSiswa
 import com.example.prak7_209.room.Siswa
@@ -26,6 +28,11 @@ class EntryViewModel (private val repositoriSiswa: RepositoriSiswa): ViewModel()
         }
     }
 }
+
+data class UIStateSiswa(
+    val detailSiswa: DetailSiswa = DetailSiswa(),
+    val isEntryValid: Boolean = false,
+)
 
 data class DetailSiswa(
     val id: Int = 0,
