@@ -5,6 +5,28 @@ import androidx.lifecycle.ViewModel
 import com.example.prak7_209.repository.RepositoriSiswa
 import com.example.prak7_209.room.Siswa
 
+class EntryViewModel (private val repositoriSiswa: RepositoriSiswa): ViewModel(){
+//    berisikan status siswa saat ini
+    var uiStateSiswa by mutableStateOf(UIStateSiswa())
+        private set
+//    fungsi untuk memvalidasi input
+    private fun validasiInput(uiState: DetailSiswa = uiStateSiswa.detailSiswa): Boolean{
+        return with(uiState){
+            nama.isNotBlank() && alamat.isNotBlank() && telepon.isNotBlank()
+        }
+    }
+    fun updateUiState(detailSiswa: DetailSiswa){
+        uiStateSiswa =
+            UIStateSiswa(detailSiswa = detailSiswa, isEntryValid = validasiInput(detailSiswa))
+    }
+//    fungsi utnuk menyimpan data yang di entry
+    suspend fun saveSiswa(){
+        if (validasiInput()){
+            repositoriSiswa.insertSiswa(uiStateSiswa.detailSiswa.toSiswa())
+        }
+    }
+}
+
 data class DetailSiswa(
     val id: Int = 0,
     val nama: String = "",
