@@ -47,7 +47,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun DetailSiswaScreen(
     //navigateToEditItem: (Int) -> Unit, harusnya navigatetoUpdate
-//    navigateToDetail:(Int) -> Unit,
+    navigateToEditItem:(Int) -> Unit,
     navigateBack: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: DetailViewModel = viewModel(factory = PenyediaViewModel.Factory)
@@ -63,8 +63,10 @@ fun DetailSiswaScreen(
         floatingActionButton = {
             val uiState = viewModel.uiDetailState.collectAsState()
             FloatingActionButton(
-                //navigateToEditItem(uiState.value.detailSiswa.id)
-                onClick = {  },
+                //
+                onClick = {
+                    navigateToEditItem(uiState.value.detailSiswa.id)
+                },
                 shape = MaterialTheme.shapes.medium,
                 modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_large))
 
