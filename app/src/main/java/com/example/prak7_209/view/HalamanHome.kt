@@ -2,6 +2,7 @@
 
 package com.example.prak7_209.view
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -44,6 +45,7 @@ import com.example.prak7_209.viewmodel.provider.PenyediaViewModel
 @Composable
 fun HomeScreen(
     navigateToItemEntry: () -> Unit,
+    navigateToItemDetail:(Int) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ){
@@ -72,6 +74,7 @@ fun HomeScreen(
         val uiStateSiswa by viewModel.homeUiState.collectAsState()
         BodyHome(
             itemSiswa = uiStateSiswa.listSiswa,
+            onSiswaClick = navigateToItemDetail,
             modifier = Modifier
                 .padding(innerPadding)
                 .fillMaxSize()
@@ -81,6 +84,7 @@ fun HomeScreen(
 @Composable
 fun BodyHome(
     itemSiswa: List<Siswa>,
+    onSiswaClick: (Int) -> Unit, //karena idnya int
     modifier: Modifier = Modifier
 ){
     Column(
@@ -96,19 +100,26 @@ fun BodyHome(
         }
         else{
             ListSiswa(itemSiswa = itemSiswa,
-                modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.padding_small)))
+                onSiswaClick = {onSiswaClick(it.id)}, //minta parameter yg di atas
+                modifier = Modifier
+                    .padding(horizontal = dimensionResource(R.dimen.padding_small)))
         }
     }
 }
 @Composable
 fun ListSiswa(
     itemSiswa: List<Siswa>,
+    onSiswaClick:(Siswa) -> Unit,
     modifier: Modifier= Modifier
 ){
     LazyColumn(modifier = Modifier) {
         items(items=itemSiswa, key={ it.id }){
                 person -> DataSiswa(
-            siswa = person, modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
+            siswa = person,
+            modifier = Modifier
+                .padding(dimensionResource(R.dimen.padding_small))
+                //menambahkan modifier clickable
+                .clickable { onSiswaClick(person) }
         )
         }
     }
