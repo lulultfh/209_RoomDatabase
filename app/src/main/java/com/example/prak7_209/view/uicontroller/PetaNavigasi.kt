@@ -6,12 +6,17 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 //import androidx.navigation.NavHost
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.example.prak7_209.view.DetailSiswaScreen
 import com.example.prak7_209.view.EntrySiswaBody
 import com.example.prak7_209.view.EntrySiswaScreen
 import com.example.prak7_209.view.HomeScreen
+import com.example.prak7_209.view.route.DestinasiDetailSiswa
+import com.example.prak7_209.view.route.DestinasiDetailSiswa.itemIdArg
 import com.example.prak7_209.view.route.DestinasiEntry
 import com.example.prak7_209.view.route.DestinasiHome
 
@@ -38,7 +43,10 @@ fun HostNavigasi(
     ){
         composable(route = DestinasiHome.route){
             HomeScreen(
-                navigateToItemEntry = {navController.navigate(route = DestinasiEntry.route)}
+                navigateToItemEntry = {navController.navigate(route = DestinasiEntry.route)},
+                navigateToItemDetail = {
+                    navController.navigate("${DestinasiDetailSiswa.route}/${it}")
+                }
             )
         }
         composable(route = DestinasiEntry.route){
@@ -46,5 +54,13 @@ fun HostNavigasi(
                 navigateBack = {navController.popBackStack()}
             )
         }
+//        composable(route= DestinasiDetailSiswa.routeWithArgs,
+//            arguments = listOf(navArgument(itemIdArg){
+//                type = NavType.IntType
+//            })) {
+//            DetailSiswaScreen(
+//                navigateBack = {navController.navigateUp()}
+//            )
+//        }
     }
 }
