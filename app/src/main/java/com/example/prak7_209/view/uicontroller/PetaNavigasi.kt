@@ -54,13 +54,13 @@ fun HostNavigasi(
                 navigateBack = {navController.popBackStack()}
             )
         }
-//        composable(route= DestinasiDetailSiswa.routeWithArgs,
-//            arguments = listOf(navArgument(itemIdArg){
-//                type = NavType.IntType
-//            })) {
-//            DetailSiswaScreen(
-//                navigateBack = {navController.navigateUp()}
-//            )
-//        }
+        composable(route= DestinasiDetailSiswa.routeWithArgs,
+            arguments = listOf(navArgument(itemIdArg){
+                type = NavType.IntType
+            })) {
+            DetailSiswaScreen(
+                navigateBack = {navController.navigateUp()}
+            )
+        }
     }
 }
