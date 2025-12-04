@@ -12,11 +12,13 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.prak7_209.view.DetailSiswaScreen
+import com.example.prak7_209.view.EditSiswaScreen
 import com.example.prak7_209.view.EntrySiswaBody
 import com.example.prak7_209.view.EntrySiswaScreen
 import com.example.prak7_209.view.HomeScreen
 import com.example.prak7_209.view.route.DestinasiDetailSiswa
 import com.example.prak7_209.view.route.DestinasiDetailSiswa.itemIdArg
+import com.example.prak7_209.view.route.DestinasiEditSiswa
 import com.example.prak7_209.view.route.DestinasiEntry
 import com.example.prak7_209.view.route.DestinasiHome
 
@@ -59,7 +61,7 @@ fun HostNavigasi(
                 type = NavType.IntType
             })) {
             DetailSiswaScreen(
-                navigateToDetailItem = {navController.navigate("${DestinasiEditSiswa.route}/${it}")}
+                navigateToEditItem = {navController.navigate("${DestinasiEditSiswa.route}/${it}")},
                 navigateBack = {navController.navigateUp()}
             )
         }
